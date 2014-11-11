@@ -1,0 +1,25 @@
+User Stories:
+1. I want to save my favorite shooting locations.
+  a. I want to save the coordinants.
+  b. I want to save picture.
+  c. Description.
+  d. Name it.
+  e. Tag/categorize it.
+  f. Rate it.
+  g. I want the ability to make my location private or public.
+2. I want to reference my saved shooting locations.
+  a. Search for it by:
+    i.   name
+    ii.  tag
+    iii. description
+  b. Sort it by:
+    i.   timestamp
+    ii.  name
+    iii. tag
+    iv.  rating
+  c. View in detail everything saved about the location.
+3. I want to share my locations with fellow "shooters".
+4. I want reference my fellow "shooters" locations.
+  a. same as 2.
+5. I want to comment on locations.
+6. I want to add to another "shooters" location, making me a contributer.

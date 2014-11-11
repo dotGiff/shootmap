@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Bicentennial Park",
+    "description": "Really cool park with a pond, view of the mountains and a big tree.",
+    "rating": 4,
+    "private": true,
+    "coordinates": {
+      "longitude": "-111.630672",
+      "latitude": "40.214095",
+      "sealevel": "1380"
+    },
+    "tags": {
+      "1": "outdoor",
+      "2": "park",
+      "3": "busy"
+    },
+    "pics": {
+      "1": "imgs/locations/bicentennial-park-1.jpg",
+      "2": "imgs/locations/bicentennial-park-2.jpg"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Downtown Springville",
+    "description": "Small town brick buildings.",
+    "rating": 3,
+    "private": false,
+    "coordinates": {
+      "longitude": "-111.61066532",
+      "latitude": "40.16395278",
+      "sealevel": "1397"
+    },
+    "tags": {
+      "1": "outdoor",
+      "2": "urban",
+      "3": "brick"
+    },
+    "pics": {
+      "1": "imgs/locations/downtown-springville-1.jpg"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Murray Park",
+    "description": "This place has everything.",
+    "rating": 5,
+    "private": true,
+    "coordinates": {
+      "longitude": "-111.882197",
+      "latitude": "40.659328",
+      "sealevel": "1309"
+    },
+    "tags": {
+      "1": "outdoor",
+      "2": "park",
+      "3": "busy",
+      "4": "river",
+      "5": "gazibo"
+    },
+    "pics": {
+      "1": "imgs/locations/murray-park-1.jpg",
+      "2": "imgs/locations/murray-park-2.jpg"
+    }
+  }
+]

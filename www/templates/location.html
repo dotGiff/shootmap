@@ -1,0 +1,9 @@
+<ion-view title="{{location.name}}">
+  <ion-content class="has-header">
+    <p>Description: {{location.description}}</p>
+    <p>Rating: {{location.rating}}</p>
+    <p>Tags: <span ng-repeat="tag in location.tags">{{tag}} </span></p>
+    <div id="map" data-tap-disabled="true"></div>
+   
+  </ion-content>
+</ion-view>
