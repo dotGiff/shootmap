@@ -33,17 +33,26 @@ angular.module('shootmap.controllers', [])
   };
 })
 
-.controller('ListCtrl', function($scope, $http) {
-  $http.get('json/locations.json').success(function(data){
-    $scope.locations = data;
-  });
-})
+.controller('ListCtrl', ['$scope', '$http', 'Locations', function($scope, $http, Locations) {
+  $scope.locations;
+  getLocations();
+
+  function getLocations(){
+    Locations.getLocations()
+      .success(function(loc){
+        $scope.locations = loc;
+      }).
+      error(function(error){
+        $scope.locations = 'whoops, something went wrong: ' + error.message;
+      });
+  }
+}])
 
 .controller('LocationsCtrl', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations) {
   $http.get('json/locations.json').success(function(data){
     loc = data;
     // var loc = data;
-    function initialize(location) {
+    function initializeMap(location) {
       var myLatlng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
       var mapOptions = {
         center: myLatlng,
@@ -66,7 +75,7 @@ angular.module('shootmap.controllers', [])
       if (loc.hasOwnProperty(key) == false) {continue};
       if ($stateParams.locationId != loc[key]['id']) {continue};
       $scope.location = loc[key];
-      initialize(loc[key]);
+      initializeMap(loc[key]);
     }//for
     
   });

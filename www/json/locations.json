@@ -62,5 +62,52 @@
       "1": "imgs/locations/murray-park-1.jpg",
       "2": "imgs/locations/murray-park-2.jpg"
     }
+  },
+  {
+    "id": 4,
+    "name": "South Fork Park",
+    "description": "An awesome park, tucked inside Provo Canyon. Great view of a creek, trees, and mountains!",
+    "rating": 4,
+    "private": true,
+    "coordinates": {
+      "longitude": "-111.547376",
+      "latitude": "40.348055",
+      "sealevel": ""
+    },
+    "tags": {
+      "1": "outdoor",
+      "2": "park",
+      "3": "busy",
+      "4": "creek",
+      "5": "canyon",
+      "6": "scenic"
+    },
+    "pics": {
+      "1": "imgs/locations/south-fork-park-1.jpg",
+      "2": "imgs/locations/south-fork-park-2.jpg",
+      "3": "imgs/locations/south-fork-park-3.jpg"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Provo Castle",
+    "description": "Really cool spot for formal pictures, it's like a medieval castle. Be aware it COSTS $20 to shoot here.",
+    "rating": 3,
+    "private": false,
+    "coordinates": {
+      "longitude": "-111.631596",
+      "latitude": "40.234115",
+      "sealevel": ""
+    },
+    "tags": {
+      "1": "outdoor",
+      "2": "castle",
+      "3": "formal",
+      "4": "pond"
+    },
+    "pics": {
+      "1": "imgs/locations/provo-castle-1.jpg",
+      "2": "imgs/locations/provo-castle-2.jpg"
+    }
   }
 ]
