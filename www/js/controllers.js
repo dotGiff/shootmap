@@ -41,6 +41,7 @@ angular.module('shootmap.controllers', [])
     Locations.getLocations()
       .success(function(loc){
         $scope.locations = loc;
+        console.log(loc);
       }).
       error(function(error){
         $scope.locations = 'whoops, something went wrong: ' + error.message;
@@ -48,36 +49,36 @@ angular.module('shootmap.controllers', [])
   }
 }])
 
-.controller('LocationsCtrl', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations) {
+.controller('LocationsCtrl', ['$scope', '$stateParams', '$http', '$ionicLoading', '$compile', 'Locations', 'myMap', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations, myMap) {
   $http.get('json/locations.json').success(function(data){
     loc = data;
     // var loc = data;
-    function initializeMap(location) {
-      var myLatlng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
-      var mapOptions = {
-        center: myLatlng,
-        zoom: 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("map"),
-          mapOptions);
+    // function initializeMap(location) {
+    //   var myLatlng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
+    //   var mapOptions = {
+    //     center: myLatlng,
+    //     zoom: 16,
+    //     mapTypeId: google.maps.MapTypeId.ROADMAP
+    //   };
+    //   var map = new google.maps.Map(document.getElementById("map"),
+    //       mapOptions);
 
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title: location.name
-      });
+    //   var marker = new google.maps.Marker({
+    //     position: myLatlng,
+    //     map: map,
+    //     title: location.name
+    //   });
 
-      $scope.map = map;
-    }
+    //   $scope.map = map;
+    // }
 
     for (var key in loc) {
       if (loc.hasOwnProperty(key) == false) {continue};
       if ($stateParams.locationId != loc[key]['id']) {continue};
       $scope.location = loc[key];
-      initializeMap(loc[key]);
+      $scope.map = myMap.initializeMap(loc[key], 'map');
     }//for
     
   });
-});
+}]);
 
