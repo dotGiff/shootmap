@@ -16,13 +16,13 @@
       "3": "busy"
     },
     "pics": {
-      "1": "imgs/locations/bicentennial-park-1.jpg",
-      "2": "imgs/locations/bicentennial-park-2.jpg"
+      "1": "img/locations/bicentennial-park-1.jpg",
+      "2": "img/locations/bicentennial-park-2.jpg"
     }
   },
   {
     "id": 2,
-    "name": "Downtown Springville",
+    "name": "Downtown Provo",
     "description": "Small town brick buildings.",
     "rating": 3,
     "private": false,
@@ -37,7 +37,7 @@
       "3": "brick"
     },
     "pics": {
-      "1": "imgs/locations/downtown-springville-1.jpg"
+      "1": "img/locations/downtown-provo-1.jpg"
     }
   },
   {
@@ -59,8 +59,8 @@
       "5": "gazibo"
     },
     "pics": {
-      "1": "imgs/locations/murray-park-1.jpg",
-      "2": "imgs/locations/murray-park-2.jpg"
+      "1": "img/locations/murray-park-1.jpg",
+      "2": "img/locations/murray-park-2.jpg"
     }
   },
   {
@@ -83,13 +83,13 @@
       "6": "scenic"
     },
     "pics": {
-      "1": "imgs/locations/south-fork-park-1.jpg",
-      "2": "imgs/locations/south-fork-park-2.jpg",
-      "3": "imgs/locations/south-fork-park-3.jpg"
+      "1": "img/locations/south-fork-park-1.jpg",
+      "2": "img/locations/south-fork-park-2.jpg",
+      "3": "img/locations/south-fork-park-3.jpg"
     }
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "Provo Castle",
     "description": "Really cool spot for formal pictures, it's like a medieval castle. Be aware it COSTS $20 to shoot here.",
     "rating": 3,
@@ -106,8 +106,8 @@
       "4": "pond"
     },
     "pics": {
-      "1": "imgs/locations/provo-castle-1.jpg",
-      "2": "imgs/locations/provo-castle-2.jpg"
+      "1": "img/locations/provo-castle-1.jpg",
+      "2": "img/locations/provo-castle-2.jpg"
     }
   }
 ]

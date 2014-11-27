@@ -29,5 +29,30 @@ angular.module('shootmap.services', [])
 
     return map;
   }
-  return {initializeMap: initializeMap}; 
+  getAddress = function(lat, lng){
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]){
+          // console.log(results);
+          return results;
+        }
+      }
+    });
+    return geocoder;
+  }
+  return {
+    basicMap: function(location, elementId){
+      return initializeMap(location, elementId);
+    },
+    address: function(lat, lng){
+      // console.log(getAddress(lat, lng));
+      return getAddress(lat, lng);
+      // $http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&key=AIzaSyD0BlA-zTIOA1mqGHquRwfodO34jFxTXrI").
+      //   success(function(data, status, headers, config){
+      //     console.log(data);
+      //   });
+    }
+  }
 }]);
