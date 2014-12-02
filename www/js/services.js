@@ -11,23 +11,35 @@ angular.module('shootmap.services', [])
 }])
 
 .service('myMap', [ function() {
-  initializeMap = function(location, elementId){
-    var myLatlng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
+  
+  function initialize(location, elementId) {
     var mapOptions = {
-      center: myLatlng,
-      zoom: 16,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById(elementId),
-        mapOptions);
-
+      zoom: 16,                                               
+      minZoom: 7,  
+      center: new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude),
+      mapTypeControl: true,
+      draggable: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.TOP_RIGHT
+      },
+      panControl: false,
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.TOP_LEFT
+      }
+      scaleControl: true,
+      streetViewControl: false
+    }
+    console.log(mapOptions);
+    var map = new google.maps.Map(document.getElementById(elementId), mapOptions);
     var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
       title: location.name
     });
-
-    return map;
   }
   getAddress = function(lat, lng){
     geocoder = new google.maps.Geocoder();
@@ -44,7 +56,7 @@ angular.module('shootmap.services', [])
   }
   return {
     basicMap: function(location, elementId){
-      return initializeMap(location, elementId);
+      initialize(location, elementId);
     },
     address: function(lat, lng){
       // console.log(getAddress(lat, lng));

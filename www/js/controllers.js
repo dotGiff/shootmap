@@ -35,34 +35,37 @@ angular.module('shootmap.controllers', [])
 
 .controller('ListCtrl', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
   $scope.locations;
-  getLocations();
 
-  function getLocations(){
-    Locations.getLocations()
-      .success(function(loc){
-        $scope.locations = loc;
-        var addresses = [];
-        for (var i = 0; i < loc.length; i++) {
-          addresses[loc[i]['id']] = myMap.address(loc[i]['coordinates']['latitude'],loc[i]['coordinates']['longitude']);
-        }
-        console.log(addresses);
-      }).
-      error(function(error){
-        $scope.locations = 'whoops, something went wrong: ' + error.message;
-      });
-  }
+  Locations.getLocations()
+    .success(function(loc){
+      $scope.locations = loc;
+      var addresses = [];
+      for (var i = 0; i < loc.length; i++) {
+        addresses[loc[i]['id']] = myMap.address(loc[i]['coordinates']['latitude'],loc[i]['coordinates']['longitude']);
+      }
+      console.log(addresses);
+    })
+    .error(function(error){
+      $scope.locations = 'whoops, something went wrong: ' + error.message;
+    });
+
 }])
 
 .controller('LocationsCtrl', ['$scope', '$stateParams', '$http', '$ionicLoading', '$compile', 'Locations', 'myMap', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations, myMap) {
-  $http.get('json/locations.json').success(function(data){
-    loc = data;
-    for (var key in loc) {
-      if (loc.hasOwnProperty(key) == false) {continue};
-      if ($stateParams.locationId != loc[key]['id']) {continue};
-      $scope.location = loc[key];
-      $scope.map = myMap.basicMap(loc[key], 'map');
-    }//for
-    
-  });
+  $scope.locationn;
+
+  Locations.getLocations($stateParams.locationId)
+    .success(function(loc){
+      for (var key in loc) {
+        if (loc.hasOwnProperty(key) == false) {continue};
+        if ($stateParams.locationId != loc[key]['id']) {continue};
+        $scope.location = loc[key];
+        myMap.basicMap(loc[key], 'map');
+      }//for
+    })
+    .error(function(error){
+      console.log(error);
+    });
+
 }]);
 
