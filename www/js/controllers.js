@@ -41,7 +41,7 @@ angular.module('shootmap.controllers', [])
       $scope.locations = loc;
       var addresses = [];
       for (var i = 0; i < loc.length; i++) {
-        addresses[loc[i]['id']] = myMap.address(loc[i]['coordinates']['latitude'],loc[i]['coordinates']['longitude']);
+        addresses[loc[i]['id']] = myMap.getAddress(loc[i]['coordinates']['latitude'],loc[i]['coordinates']['longitude']);
       }
       console.log(addresses);
     })
@@ -53,6 +53,7 @@ angular.module('shootmap.controllers', [])
 
 .controller('LocationsCtrl', ['$scope', '$stateParams', '$http', '$ionicLoading', '$compile', 'Locations', 'myMap', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations, myMap) {
   $scope.locationn;
+  var address;
 
   Locations.getLocations($stateParams.locationId)
     .success(function(loc){
@@ -61,6 +62,9 @@ angular.module('shootmap.controllers', [])
         if ($stateParams.locationId != loc[key]['id']) {continue};
         $scope.location = loc[key];
         myMap.basicMap(loc[key], 'map');
+        myMap.getAddress(loc[key]['coordinates']['latitude'], loc[key]['coordinates']['longitude'], 'address');
+        // $scope.address = address;
+        // console.log(address);
       }//for
     })
     .error(function(error){

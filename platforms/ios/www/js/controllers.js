@@ -33,42 +33,39 @@ angular.module('shootmap.controllers', [])
   };
 })
 
-.controller('ListCtrl', function($scope, $http) {
-  $http.get('json/locations.json').success(function(data){
-    $scope.locations = data;
-  });
-})
+.controller('ListCtrl', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
+  $scope.locations;
 
-.controller('LocationsCtrl', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations) {
-  $http.get('json/locations.json').success(function(data){
-    loc = data;
-    // var loc = data;
-    function initialize(location) {
-      var myLatlng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
-      var mapOptions = {
-        center: myLatlng,
-        zoom: 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("map"),
-          mapOptions);
+  Locations.getLocations()
+    .success(function(loc){
+      $scope.locations = loc;
+      var addresses = [];
+      for (var i = 0; i < loc.length; i++) {
+        addresses[loc[i]['id']] = myMap.getAddress(loc[i]['coordinates']['latitude'],loc[i]['coordinates']['longitude']);
+      }
+      console.log(addresses);
+    })
+    .error(function(error){
+      $scope.locations = 'whoops, something went wrong: ' + error.message;
+    });
 
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title: location.name
-      });
+}])
 
-      $scope.map = map;
-    }
+.controller('LocationsCtrl', ['$scope', '$stateParams', '$http', '$ionicLoading', '$compile', 'Locations', 'myMap', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations, myMap) {
+  $scope.locationn;
 
-    for (var key in loc) {
-      if (loc.hasOwnProperty(key) == false) {continue};
-      if ($stateParams.locationId != loc[key]['id']) {continue};
-      $scope.location = loc[key];
-      initialize(loc[key]);
-    }//for
-    
-  });
-});
+  Locations.getLocations($stateParams.locationId)
+    .success(function(loc){
+      for (var key in loc) {
+        if (loc.hasOwnProperty(key) == false) {continue};
+        if ($stateParams.locationId != loc[key]['id']) {continue};
+        $scope.location = loc[key];
+        myMap.basicMap(loc[key], 'map');
+      }//for
+    })
+    .error(function(error){
+      console.log(error);
+    });
+
+}]);
 

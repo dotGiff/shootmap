@@ -1,9 +1,15 @@
 /* Empty. Add your own CSS if you like */
 #map {
   width: 100%;
-  height: 500px;
+  height: 200px;
+  z-index: 90;
 }
-
+a.get-directions{
+  position: absolute;
+  top: 160px;
+  right: 10px;
+  z-index: 99;
+}
 .scroll {
   height: 100%;
 }

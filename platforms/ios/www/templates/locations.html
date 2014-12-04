@@ -4,9 +4,25 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="location in locations" href="#/app/locations/{{location.id}}">
-        {{location.name}}
-      </ion-item>
+      <div ng-repeat="location in locations" class="list card">
+      <a href="#/app/locations/{{location.id}}">
+        <div class="item custom-card-head">
+          <h2>{{location.name}}</h2>
+          <span class="time-to">8 mins</span>
+        </div>
+        <div class="item item-image" id="">
+          <img src="{{location.pics.1}}">
+        </div>
+        <div class="item custom-card-info">
+          <span class="custom-card-address">123 E 93893 S, Provo, UT</span>
+          <span class="custom-card-rating">4 / 5</span>
+        </div>
+        <div class="">
+          
+        </div>
+        <div></div>
+      </a>
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>

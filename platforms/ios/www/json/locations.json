@@ -16,13 +16,13 @@
       "3": "busy"
     },
     "pics": {
-      "1": "imgs/locations/bicentennial-park-1.jpg",
-      "2": "imgs/locations/bicentennial-park-2.jpg"
+      "1": "img/locations/bicentennial-park-1.jpg",
+      "2": "img/locations/bicentennial-park-2.jpg"
     }
   },
   {
     "id": 2,
-    "name": "Downtown Springville",
+    "name": "Downtown Provo",
     "description": "Small town brick buildings.",
     "rating": 3,
     "private": false,
@@ -37,7 +37,7 @@
       "3": "brick"
     },
     "pics": {
-      "1": "imgs/locations/downtown-springville-1.jpg"
+      "1": "img/locations/downtown-provo-1.jpg"
     }
   },
   {
@@ -59,8 +59,55 @@
       "5": "gazibo"
     },
     "pics": {
-      "1": "imgs/locations/murray-park-1.jpg",
-      "2": "imgs/locations/murray-park-2.jpg"
+      "1": "img/locations/murray-park-1.jpg",
+      "2": "img/locations/murray-park-2.jpg"
+    }
+  },
+  {
+    "id": 4,
+    "name": "South Fork Park",
+    "description": "An awesome park, tucked inside Provo Canyon. Great view of a creek, trees, and mountains!",
+    "rating": 4,
+    "private": true,
+    "coordinates": {
+      "longitude": "-111.547376",
+      "latitude": "40.348055",
+      "sealevel": ""
+    },
+    "tags": {
+      "1": "outdoor",
+      "2": "park",
+      "3": "busy",
+      "4": "creek",
+      "5": "canyon",
+      "6": "scenic"
+    },
+    "pics": {
+      "1": "img/locations/south-fork-park-1.jpg",
+      "2": "img/locations/south-fork-park-2.jpg",
+      "3": "img/locations/south-fork-park-3.jpg"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Provo Castle",
+    "description": "Really cool spot for formal pictures, it's like a medieval castle. Be aware it COSTS $20 to shoot here.",
+    "rating": 3,
+    "private": false,
+    "coordinates": {
+      "longitude": "-111.631596",
+      "latitude": "40.234115",
+      "sealevel": ""
+    },
+    "tags": {
+      "1": "outdoor",
+      "2": "castle",
+      "3": "formal",
+      "4": "pond"
+    },
+    "pics": {
+      "1": "img/locations/provo-castle-1.jpg",
+      "2": "img/locations/provo-castle-2.jpg"
     }
   }
 ]

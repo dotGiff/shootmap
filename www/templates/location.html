@@ -1,9 +1,15 @@
 <ion-view title="{{location.name}}">
   <ion-content class="has-header">
+    <div id="map" class="map-header" data-tap-disabled="true"></div>
+    <a href="geo:{{location.coordinates.latitude}},{{location.coordinates.longitude}}" class="button button-small icon-right ion-navigate get-directions">Get Directions</a>
+    <div class="row responsive-sm">
+      <div id="address">
+        
+      </div>
+    </div>
     <p>Description: {{location.description}}</p>
     <p>Rating: {{location.rating}}</p>
     <p>Tags: <span ng-repeat="tag in location.tags">{{tag}} </span></p>
-    <div id="map" data-tap-disabled="true"></div>
    
   </ion-content>
 </ion-view>
