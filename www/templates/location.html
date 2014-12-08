@@ -3,13 +3,25 @@
     <div id="map" class="map-header" data-tap-disabled="true"></div>
     <a href="geo:{{location.coordinates.latitude}},{{location.coordinates.longitude}}" class="button button-small icon-right ion-navigate get-directions">Get Directions</a>
     <div class="row responsive-sm">
-      <div id="address">
-        
+      <div class="address col">
+        <h1 class="center-text">
+          {{location.address.street}}, 
+          {{location.address.city}}, 
+          {{location.address.state}} 
+        </h1>
       </div>
+      <div class="col">
+        <h1>Description</h1>
+        <p>{{location.description}}</p>
+      </div>
+      <!-- <div class="col row">
+        <h1>Photos</h1>
+        <div class="col col-thumbnail" ng-repeat="photo in location.pics">
+          <img src="{{photo}}">
+        </div>
+      </div> -->
     </div>
-    <p>Description: {{location.description}}</p>
-    <p>Rating: {{location.rating}}</p>
-    <p>Tags: <span ng-repeat="tag in location.tags">{{tag}} </span></p>
+    
    
   </ion-content>
 </ion-view>

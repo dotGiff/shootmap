@@ -52,6 +52,15 @@ angular.module('shootmap', ['ionic', 'shootmap.controllers', 'shootmap.services'
       }
     })
 
+    .state('app.add', {
+      url: "/add",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/addLocation.html"
+        }
+      }
+    })
+
     .state('app.location', {
       url: "/locations/:locationId",
       views: {

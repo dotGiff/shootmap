@@ -1,0 +1,59 @@
+<ion-view title="Add Location">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <h1>Add</h1>
+    <form>
+      <div class="list">
+
+        <div class="control-group">
+          <label>
+            <span class="input-label">Location Name</span>
+            <input id="name" value="" ng-model="location.name" name="name" required type="text" placeholder="Martin Park">
+
+            <span class="error" ng-show="showValidationMessage && myForm.name.$error.required">Insert Name</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span class="input-label">Description</span>
+            <textarea id="description" value="" ng-model="location.description" name="description" required placeholder="blah blah blah..."></textarea>
+
+            <span class="error" ng-show="showValidationMessage && myForm.description.$error.required">Insert Description</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span class="input-label">Tags</span>
+            <input id="tags" value="" ng-model="location.tags" name="tags" type="text" placeholder="#scenic #busy #pond">
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span class="input-label">Photos</span>
+            <input id="photos" value="photo" ng-model="location.photos" name="photos" required type="file">
+
+            <span class="error" ng-show="showValidationMessage && myForm.photos.$error.required">Insert at Least One Photo</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label>
+            <span class="input-label">Rating</span>
+            <label><input id="rating" value="1" ng-model="location.rating" name="rating" required type="radio"> 1 star</label>
+            <label><input id="rating" value="2" ng-model="location.rating" name="rating" required type="radio"> 2 star</label>
+            <label><input id="rating" value="3" ng-model="location.rating" name="rating" required type="radio"> 3 star</label>
+            <label><input id="rating" value="4" ng-model="location.rating" name="rating" required type="radio"> 4 star</label>
+            <label><input id="rating" value="5" ng-model="location.rating" name="rating" required type="radio"> 5 star</label>
+            <span class="error" ng-show="showValidationMessage && myForm.rating.$error.required">Insert Rating</span>
+          </label>
+        </div>
+
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

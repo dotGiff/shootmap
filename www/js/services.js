@@ -26,7 +26,7 @@ angular.module('shootmap.services', [])
         position: google.maps.ControlPosition.TOP_RIGHT
       },
       panControl: false,
-      zoomControl: true,
+      zoomControl: false,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE,
         position: google.maps.ControlPosition.TOP_LEFT
@@ -48,11 +48,11 @@ angular.module('shootmap.services', [])
     getAddress: function(lat, lng, elementId){
       geocoder = new google.maps.Geocoder();
       var latlng = new google.maps.LatLng(lat, lng);
-      var address;
+      var element = document.getElementById(elementId);
       geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           console.log(results[0].formatted_address);
-          document.getElementById(elementId).value = results[0].formatted_address;
+          element.value = results[0].formatted_address;
         }
       });
     }

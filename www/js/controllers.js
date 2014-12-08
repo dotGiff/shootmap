@@ -64,11 +64,29 @@ angular.module('shootmap.controllers', [])
         myMap.basicMap(loc[key], 'map');
         myMap.getAddress(loc[key]['coordinates']['latitude'], loc[key]['coordinates']['longitude'], 'address');
         // $scope.address = address;
-        // console.log(address);
+        console.log(loc[key]['coordinates']['latitude'], loc[key]['coordinates']['longitude']);
       }//for
     })
     .error(function(error){
       console.log(error);
+    });
+
+}])
+
+.controller('add', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
+  $scope.locations;
+
+  Locations.getLocations()
+    .success(function(loc){
+      $scope.locations = loc;
+      var addresses = [];
+      for (var i = 0; i < loc.length; i++) {
+        addresses[loc[i]['id']] = myMap.getAddress(loc[i]['coordinates']['latitude'],loc[i]['coordinates']['longitude']);
+      }
+      console.log(addresses);
+    })
+    .error(function(error){
+      $scope.locations = 'whoops, something went wrong: ' + error.message;
     });
 
 }]);
