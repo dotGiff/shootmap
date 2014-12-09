@@ -76,6 +76,11 @@ angular.module('shootmap.controllers', [])
       console.log(error);
     });
 
+  $scope.myActiveSlide = 0;
+  console.log($scope.myActiveSlide);
+  $scope.slideChange = function(index){
+    console.log(index);
+  }
 }])
 
 .controller('add', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {

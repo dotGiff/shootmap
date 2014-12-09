@@ -33,42 +33,65 @@ angular.module('shootmap.controllers', [])
   };
 })
 
-.controller('ListCtrl', function($scope, $http) {
-  $http.get('json/locations.json').success(function(data){
-    $scope.locations = data;
-  });
-})
+.controller('ListCtrl', ['$scope', '$http', '$stateParams', 'Locations', 'myMap', function($scope, $http, $stateParams, Locations, myMap) {
+  $scope.locations;
+  $scope.search = $stateParams.search;
+  
+  Locations.getLocations()
+    .success(function(loc){
+      $scope.locations = loc;
+    })
+    .error(function(error){
+      $scope.locations = 'whoops, something went wrong: ' + error.message;
+    });
+  
+}])
 
-.controller('LocationsCtrl', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations) {
-  $http.get('json/locations.json').success(function(data){
-    loc = data;
-    // var loc = data;
-    function initialize(location) {
-      var myLatlng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
-      var mapOptions = {
-        center: myLatlng,
-        zoom: 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("map"),
-          mapOptions);
+.controller('LocationsCtrl', ['$scope', '$stateParams', '$http', '$ionicLoading', '$compile', 'Locations', 'myMap', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations, myMap) {
+  $scope.locationn;
+  $scope.viewPort = document.documentElement.clientWidth;
+  var address;
+  var rating;
+  var defaultVal = "-outline";
+  var ratingArray = [defaultVal,defaultVal,defaultVal,defaultVal,defaultVal];
 
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title: location.name
-      });
+  Locations.getLocations($stateParams.locationId)
+    .success(function(loc){
+      for (var key in loc) {
+        if (loc.hasOwnProperty(key) == false) {continue};
+        if ($stateParams.locationId != loc[key]['id']) {continue};
+        $scope.location = loc[key];
 
-      $scope.map = map;
-    }
+        rating = loc[key]['rating'];
+        ratingArray.length = 5;
+        for(var i = 0; i < rating; i++){
+          ratingArray[i] = "";
+        }
+        // $scope.stars = JSON.stringify(ratingArray);
+        $scope.starsRating = ratingArray;
 
-    for (var key in loc) {
-      if (loc.hasOwnProperty(key) == false) {continue};
-      if ($stateParams.locationId != loc[key]['id']) {continue};
-      $scope.location = loc[key];
-      initialize(loc[key]);
-    }//for
-    
-  });
-});
+      }//for
+    })
+    .error(function(error){
+      console.log(error);
+    });
+
+}])
+
+.controller('add', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
+  $scope.locations;
+
+  Locations.getLocations()
+    .success(function(loc){
+      $scope.locations = loc;
+      var addresses = [];
+      for (var i = 0; i < loc.length; i++) {
+      }
+      console.log(addresses);
+    })
+    .error(function(error){
+      $scope.locations = 'whoops, something went wrong: ' + error.message;
+    });
+
+}]);
 

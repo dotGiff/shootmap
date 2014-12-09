@@ -10,9 +10,9 @@ angular.module('shootmap.services', [])
   return Locations;
 }])
 
-.service('myMap', [ function() {
+.service('myMap', ['$http', function($http) {
   
-  function initialize(location, elementId) {
+  initialize = function(location, elementId) {
     var myLatlng = new google.maps.LatLng(location.coordinates.latitude, location.coordinates.longitude);
     var mapOptions = {
       zoom: 16,                                               
@@ -26,7 +26,7 @@ angular.module('shootmap.services', [])
         position: google.maps.ControlPosition.TOP_RIGHT
       },
       panControl: false,
-      zoomControl: true,
+      zoomControl: false,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE,
         position: google.maps.ControlPosition.TOP_LEFT
@@ -41,30 +41,9 @@ angular.module('shootmap.services', [])
       title: location.name
     });
   }
-  getAddress = function(lat, lng){
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(lat, lng);
-    geocoder.geocode({'latLng': latlng}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        if (results[1]){
-          // console.log(results);
-          return results;
-        }
-      }
-    });
-    return geocoder;
-  }
   return {
     basicMap: function(location, elementId){
       initialize(location, elementId);
-    },
-    getAddress: function(lat, lng){
-      // console.log(getAddress(lat, lng));
-      return getAddress(lat, lng);
-      // $http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&key=AIzaSyD0BlA-zTIOA1mqGHquRwfodO34jFxTXrI").
-      //   success(function(data, status, headers, config){
-      //     console.log(data);
-      //   });
     }
   }
 }]);

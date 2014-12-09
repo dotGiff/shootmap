@@ -3,7 +3,6 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <h1>Add</h1>
     <form>
       <div class="list">
 
@@ -44,11 +43,46 @@
         <div class="control-group">
           <label>
             <span class="input-label">Rating</span>
-            <label><input id="rating" value="1" ng-model="location.rating" name="rating" required type="radio"> 1 star</label>
-            <label><input id="rating" value="2" ng-model="location.rating" name="rating" required type="radio"> 2 star</label>
-            <label><input id="rating" value="3" ng-model="location.rating" name="rating" required type="radio"> 3 star</label>
-            <label><input id="rating" value="4" ng-model="location.rating" name="rating" required type="radio"> 4 star</label>
-            <label><input id="rating" value="5" ng-model="location.rating" name="rating" required type="radio"> 5 star</label>
+            <label>
+              <input  id="rating" 
+                      value="1" 
+                      ng-model="location.rating" 
+                      name="rating" 
+                      required 
+                      type="radio"> 1 star
+            </label>
+            <label>
+              <input  id="rating" 
+                      value="2" 
+                      ng-model="location.rating" 
+                      name="rating" 
+                      required 
+                      type="radio"> 2 star
+            </label>
+            <label>
+              <input  id="rating" 
+                      value="3" 
+                      ng-model="location.rating" 
+                      name="rating" 
+                      required 
+                      type="radio"> 3 star
+            </label>
+            <label>
+              <input  id="rating" 
+                      value="4" 
+                      ng-model="location.rating" 
+                      name="rating" 
+                      required 
+                      type="radio"> 4 star
+            </label>
+            <label>
+              <input  id="rating" 
+                      value="5" 
+                      ng-model="location.rating" 
+                      name="rating" 
+                      required 
+                      type="radio"> 5 star
+            </label>
             <span class="error" ng-show="showValidationMessage && myForm.rating.$error.required">Insert Rating</span>
           </label>
         </div>

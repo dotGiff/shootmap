@@ -1,9 +1,43 @@
 <ion-view title="{{location.name}}">
   <ion-content class="has-header">
-    <p>Description: {{location.description}}</p>
-    <p>Rating: {{location.rating}}</p>
-    <p>Tags: <span ng-repeat="tag in location.tags">{{tag}} </span></p>
-    <div id="map" data-tap-disabled="true"></div>
-   
+    <ul rn-carousel class="image slider">
+      <li class="map">
+        <div class="slide">
+          <img class="carousel-img" src="https://maps.googleapis.com/maps/api/staticmap?center={{location.coordinates.latitude}},{{location.coordinates.longitude}}&zoom=16&size={{viewPort}}x230">
+          <a href="geo:{{location.coordinates.latitude}},{{location.coordinates.longitude}}" class="button button-small icon-right ion-navigate get-directions">go!</a>
+        </div>
+      </li>
+      <li ng-repeat="image in location.pics">
+        <div class="slide">
+          <img ng-src="{{image}}" class="carousel-img">
+        </div>
+      </li>
+    </ul>
+    <ion-list class="location-card">
+      <div class="address list item card">
+        <h1 class="center-text">
+          {{location.address.street}}, 
+          {{location.address.city}}, 
+          {{location.address.state}} 
+        </h1>
+      </div>
+      <div>
+        <div class="row rating">
+          <i class="col col-20 icon ion-ios7-star{{star}} center-text"
+              ng-repeat="star in starsRating track by $index"></i>
+        </div>
+      </div>
+      <div class="list item card item-text-wrap">
+        <h1>Description</h1>
+        <p>{{location.description}}</p>
+      </div>
+      <div class="list item card item-text-wrap">
+        <h1>Tags</h1>
+        <div class="tags">
+          <a class="tag" ng-repeat="tag in location.tags" href="#/app/locations//{{tag}}"><span class="bold">#</span>{{tag}}</a>
+        </div>
+      </div>
+    </ion-list>
+    
   </ion-content>
 </ion-view>

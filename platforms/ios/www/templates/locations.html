@@ -1,10 +1,25 @@
-<ion-view title="locations">
+<div><ion-search></ion-search></div>
+<ion-view title="Locations">
+
   <ion-nav-buttons side="left">
+
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+
+    <h1 class="title">Locations</h1>
+
+    <!-- <div class="button button-icon icon ion-search right" on-touch="showSearch()"></div> -->
+
   </ion-nav-buttons>
+
   <ion-content class="has-header">
+
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" ng-value="{{search}}" ng-model="search">
+    </label>
+
     <ion-list>
-      <div ng-repeat="location in locations" class="list card">
+      <div ng-repeat="location in locations | filter:search" class="list card">
       <a href="#/app/locations/{{location.id}}">
         <div class="item custom-card-head">
           <h2>{{location.name}}</h2>
@@ -14,8 +29,12 @@
           <img src="{{location.pics.1}}">
         </div>
         <div class="item custom-card-info">
-          <span class="custom-card-address">123 E 93893 S, Provo, UT</span>
-          <span class="custom-card-rating">4 / 5</span>
+          <span class="custom-card-address">
+            {{location.address.street}}, 
+            {{location.address.city}}, 
+            {{location.address.state}} 
+          </span>
+          <span class="custom-card-rating">rating: <span class="bold">{{location.rating}}</span> / 5</span>
         </div>
         <div class="">
           
@@ -25,4 +44,5 @@
       </div>
     </ion-list>
   </ion-content>
+
 </ion-view>

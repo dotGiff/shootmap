@@ -33,26 +33,27 @@ angular.module('shootmap.controllers', [])
   };
 })
 
-.controller('ListCtrl', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
+.controller('ListCtrl', ['$scope', '$http', '$stateParams', 'Locations', 'myMap', function($scope, $http, $stateParams, Locations, myMap) {
   $scope.locations;
-
+  $scope.search = $stateParams.search;
+  
   Locations.getLocations()
     .success(function(loc){
       $scope.locations = loc;
-      var addresses = [];
-      for (var i = 0; i < loc.length; i++) {
-        addresses[loc[i]['id']] = myMap.getAddress(loc[i]['coordinates']['latitude'],loc[i]['coordinates']['longitude']);
-      }
-      console.log(addresses);
     })
     .error(function(error){
       $scope.locations = 'whoops, something went wrong: ' + error.message;
     });
-
+  
 }])
 
 .controller('LocationsCtrl', ['$scope', '$stateParams', '$http', '$ionicLoading', '$compile', 'Locations', 'myMap', function($scope, $stateParams, $http, $ionicLoading, $compile, Locations, myMap) {
   $scope.locationn;
+  $scope.viewPort = document.documentElement.clientWidth;
+  var address;
+  var rating;
+  var defaultVal = "-outline";
+  var ratingArray = [defaultVal,defaultVal,defaultVal,defaultVal,defaultVal];
 
   Locations.getLocations($stateParams.locationId)
     .success(function(loc){
@@ -60,11 +61,41 @@ angular.module('shootmap.controllers', [])
         if (loc.hasOwnProperty(key) == false) {continue};
         if ($stateParams.locationId != loc[key]['id']) {continue};
         $scope.location = loc[key];
-        myMap.basicMap(loc[key], 'map');
+
+        rating = loc[key]['rating'];
+        ratingArray.length = 5;
+        for(var i = 0; i < rating; i++){
+          ratingArray[i] = "";
+        }
+        // $scope.stars = JSON.stringify(ratingArray);
+        $scope.starsRating = ratingArray;
+
       }//for
     })
     .error(function(error){
       console.log(error);
+    });
+
+  $scope.myActiveSlide = 0;
+  console.log($scope.myActiveSlide);
+  $scope.slideChange = function(index){
+    console.log(index);
+  }
+}])
+
+.controller('add', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
+  $scope.locations;
+
+  Locations.getLocations()
+    .success(function(loc){
+      $scope.locations = loc;
+      var addresses = [];
+      for (var i = 0; i < loc.length; i++) {
+      }
+      console.log(addresses);
+    })
+    .error(function(error){
+      $scope.locations = 'whoops, something went wrong: ' + error.message;
     });
 
 }]);

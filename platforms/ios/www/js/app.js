@@ -1,5 +1,5 @@
 
-angular.module('shootmap', ['ionic', 'shootmap.controllers', 'shootmap.services'])
+angular.module('shootmap', ['ionic', 'shootmap.controllers', 'shootmap.services', 'angular-carousel'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -15,7 +15,7 @@ angular.module('shootmap', ['ionic', 'shootmap.controllers', 'shootmap.services'
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {    
   $stateProvider
 
     .state('app', {
@@ -42,12 +42,22 @@ angular.module('shootmap', ['ionic', 'shootmap.controllers', 'shootmap.services'
         }
       }
     })
+
     .state('app.locations', {
-      url: "/locations",
+      url: "/locations//:search",
       views: {
         'menuContent' :{
           templateUrl: "templates/locations.html",
           controller: 'ListCtrl'
+        }
+      }
+    })
+
+    .state('app.add', {
+      url: "/add",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/addLocation.html"
         }
       }
     })
@@ -62,6 +72,6 @@ angular.module('shootmap', ['ionic', 'shootmap.controllers', 'shootmap.services'
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/locations');
+  $urlRouterProvider.otherwise('/app/locations//');
 });
 
