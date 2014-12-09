@@ -92,6 +92,11 @@ h2 {
   color: blue;
 }
 
+.location-card div.address{
+  background: #43cee6;
+  font-size: 18px;
+}
+
 div.rating{
   margin: auto;
   width: 65%;

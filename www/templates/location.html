@@ -2,7 +2,8 @@
   <ion-content class="has-header">
     <ion-slide-box active-slide="myActiveSlide" on-slide-change="slideChange($index)">
       <ion-slide>
-        <a href="geo:{{location.coordinates.latitude}},{{location.coordinates.longitude}}">
+        <a href="https://www.google.com/maps/@{{location.coordinates.latitude}},{{location.coordinates.longitude}}"
+        target="_blank">
           <img src="https://maps.googleapis.com/maps/api/staticmap?center={{location.coordinates.latitude}},{{location.coordinates.longitude}}&zoom=12&size={{viewPort}}x230">
         </a>
       </ion-slide>
