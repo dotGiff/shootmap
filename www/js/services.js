@@ -44,17 +44,6 @@ angular.module('shootmap.services', [])
   return {
     basicMap: function(location, elementId){
       initialize(location, elementId);
-    },
-    getAddress: function(lat, lng, elementId){
-      geocoder = new google.maps.Geocoder();
-      var latlng = new google.maps.LatLng(lat, lng);
-      var element = document.getElementById(elementId);
-      geocoder.geocode({'latLng': latlng}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          console.log(results[0].formatted_address);
-          element.value = results[0].formatted_address;
-        }
-      });
     }
   }
 }]);

@@ -2,7 +2,13 @@
 .center-text{
   text-align: center;
 }
-#map {
+.bold{
+  font-weight: bold;
+}
+.center{
+
+}
+.map {
   width: 100%;
   height: 200px;
   z-index: 90;
@@ -13,6 +19,7 @@ a.get-directions{
   top: 160px;
   right: 10px;
   z-index: 99;
+  font-size: 22px;
 }
 .scroll {
   height: 100%;
@@ -43,20 +50,58 @@ h2 {
   float: right;
 }
 
-div.responsive-sm div.col{
+.location-card div.item{
   background: #eee;
-  padding: 15px 0;
+  padding: 15px;
 }
 
-div.responsive-sm div.col h1{
+.location-card div.item h1{
   font-size: 18px;
   margin: 0;
 }
 
-div.responsive-sm div.col p{
+.location-card div.item p{
   margin-top: 10px;
 }
 
-div.responsive-sm div.col img{
+.location-card div.item img{
   width: 100%;
+}
+
+.location-card div.tags {
+  /*background: white;*/
+  /*padding: 5px;*/
+  width: 100%;
+}
+
+.location-card div.tags a.tag{
+  border: #999 solid 1px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background: #ccc;
+  padding: 1px 5px;
+  color: blue;
+}
+
+div.rating{
+  margin: auto;
+  width: 65%;
+  color: orange;
+  font-size: 24px;
+}
+
+div.rating i{
+  -webkit-text-stroke: .7px #555;
+}
+
+label.toggle{
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  z-index: 999;
+}
+
+ul.image {
+  width: 100% !important;
 }
