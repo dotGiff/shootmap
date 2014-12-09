@@ -1,6 +1,5 @@
 # Created by .gitignore support plugin (hsz.mobi)
 .DS_Store
-platforms/
 node_modules
 *.sw[mnpcod]
 *.log
@@ -22,6 +21,7 @@ UserInterfaceState.xcuserstate
 
 bower_components/
 components/
+platforms/
 tmp
 temp
 dist
