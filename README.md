@@ -14,6 +14,12 @@ npm install -g cordova
 npm install -g ionic
 ```
 ```
+git clone https://github.com/dotGiff/shootmap.git
+```
+```
+cd shootmap
+```
+```
 ionic serve 
 ```
 That's all!
