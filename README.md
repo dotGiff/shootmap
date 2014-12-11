@@ -19,7 +19,12 @@ git clone https://github.com/dotGiff/shootmap.git
 ```
 cd shootmap
 ```
+In browser testing:
 ```
 ionic serve 
 ```
-That's all!
+emulating (must have platform set up):
+```
+ionic platform ios
+ionic emulate ios
+```
