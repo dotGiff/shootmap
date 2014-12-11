@@ -22,6 +22,9 @@ UserInterfaceState.xcuserstate
 bower_components/
 components/
 platforms/
+plugins/
+hooks/
+scss/
 tmp
 temp
 dist
