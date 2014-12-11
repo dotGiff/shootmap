@@ -106,7 +106,24 @@ angular.module('shootmap.controllers', [])
     // This is checking to see if the Geoeode Status is OK before proceeding
     if (status == google.maps.GeocoderStatus.OK) {
       
-      $scope.address = results[0]['address_components'];
+      // $scope.address = results[0]['address_components'];
+      $scope.address = [
+        'locality', //city 0
+        'administrative_area_level_1', //state 1
+        'postal_code', //zip 2
+        'street_number', //house number 3
+        'route', //street 4
+        'establishment' //name 5
+       ];
+      console.log(results[0]['address_components']);
+      for (var i = 0; i < $scope.address.length; i++) {
+        for (var j = 0; j < results[0]['address_components'].length; j++){
+          if ($scope.address[i] == results[0]['address_components'][j]['types'][0]) {
+            $scope.address[i] = results[0]['address_components'][j]['short_name'];
+          };
+        };
+      };
+      $scope.address['address'] = $scope.address[3] + ' ' + $scope.address[4];
       console.log($scope.address);
     }
   }); 

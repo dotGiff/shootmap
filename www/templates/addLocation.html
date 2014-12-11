@@ -3,14 +3,13 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-  {{lat}} - {{lng}}
     <form>
       <div class="list">
 
         <div class="item item-input item-stacked-label">
           <label for="name">
             <span class="input-label">Location Name</span>
-            <input id="name" value="" ng-model="address.1.long_name" name="name" required type="text" placeholder="Martin Park">
+            <input id="name" value="" ng-model="address.5" name="name" required type="text" placeholder="Martin Park">
 
             <span class="error" ng-show="showValidationMessage && myForm.name.$error.required">Insert Name</span>
           </label>
@@ -42,48 +41,12 @@
           </label>
         </div>
 
-        <div class="item item-input item-stacked-label">
-          <label>
-            <label>
-              <input  id="rating" 
-                      value="1" 
-                      ng-model="location.rating" 
-                      name="rating" 
-                      required 
-                      type="radio"> 1 star
-            </label>
-            <label>
-              <input  id="rating" 
-                      value="2" 
-                      ng-model="location.rating" 
-                      name="rating" 
-                      required 
-                      type="radio"> 2 star
-            </label>
-            <label>
-              <input  id="rating" 
-                      value="3" 
-                      ng-model="location.rating" 
-                      name="rating" 
-                      required 
-                      type="radio"> 3 star
-            </label>
-            <label>
-              <input  id="rating" 
-                      value="4" 
-                      ng-model="location.rating" 
-                      name="rating" 
-                      required 
-                      type="radio"> 4 star
-            </label>
-            <label>
-              <input  id="rating" 
-                      value="5" 
-                      ng-model="location.rating" 
-                      name="rating" 
-                      required 
-                      type="radio"> 5 star
-            </label>
+        <div class="item item-input item-stacked-label rating-add">
+          <label for="rating">
+            <span class="input-label">Rating</span><br>
+            <!-- <i class="icon ion-ios7-star-outline"></i> -->
+            <input type="range" name="rating" min="1" max="5" value="4">
+            <!-- <i class="icon ion-ios7-star"></i> -->
             <span class="error" ng-show="showValidationMessage && myForm.rating.$error.required">Insert Rating</span>
           </label>
         </div>
@@ -91,28 +54,28 @@
         <div class="item item-input item-stacked-label">
           <label for="address">
             <span class="input-label">Address</span>
-            <input id="address" name="address" type="text" placeholder="Provo" ng-model="address.2.long_name">
+            <input id="address" name="address" type="text" placeholder="Provo" ng-model="address.address">
           </label>
         </div>
 
         <div class="item item-input item-stacked-label">
           <label for="city">
             <span class="input-label">City</span>
-            <input id="city" name="city" type="text" placeholder="Provo" ng-model="address.4.long_name">
+            <input id="city" name="city" type="text" placeholder="Provo" ng-model="address.0">
           </label>
         </div>
 
         <div class="item item-input item-stacked-label">
           <label for="state">
             <span class="input-label">State</span>
-            <input id="state" value="" name="state" type="text" placeholder="UT" ng-model="address.6.short_name">
+            <input id="state" name="state" type="text" placeholder="UT" ng-model="address.1">
           </label>
         </div>
 
         <div class="item item-input item-stacked-label">
           <label for="zip">
             <span class="input-label">Zip</span>
-            <input id="zip" value="" ng-model="address.8.short_name" name="zip" type="text" placeholder="84123">
+            <input id="zip" ng-model="address.2" name="zip" type="text" placeholder="84123">
           </label>
         </div>
 
