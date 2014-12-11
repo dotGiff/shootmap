@@ -83,20 +83,15 @@ angular.module('shootmap.controllers', [])
   }
 }])
 
-.controller('add', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
-  $scope.locations;
-
-  Locations.getLocations()
-    .success(function(loc){
-      $scope.locations = loc;
-      var addresses = [];
-      for (var i = 0; i < loc.length; i++) {
-      }
-      console.log(addresses);
-    })
-    .error(function(error){
-      $scope.locations = 'whoops, something went wrong: ' + error.message;
-    });
+.controller('AddLocation', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
+  
+  // navigator.geolocation.getCurrentPosition(function(pos) {
+  //   $scope.lat = pos.coords.latitude;
+  //   $scope.lng = pos.coords.longitude;
+  //   console.log($scope.lat + ' - ' + $scope.lng);
+  // }, function(error) {
+  //   alert('Unable to get location: ' + error.message);
+  // });
 
 }]);
 

@@ -83,20 +83,33 @@ angular.module('shootmap.controllers', [])
   }
 }])
 
-.controller('add', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
-  $scope.locations;
+.controller('AddLocation', ['$scope', '$http', 'Locations', 'myMap', function($scope, $http, Locations, myMap) {
 
-  Locations.getLocations()
-    .success(function(loc){
-      $scope.locations = loc;
-      var addresses = [];
-      for (var i = 0; i < loc.length; i++) {
-      }
-      console.log(addresses);
-    })
-    .error(function(error){
-      $scope.locations = 'whoops, something went wrong: ' + error.message;
-    });
+  // navigator.geolocation.getCurrentPosition(function(pos) {
+  //   $scope.lat = pos.coords.latitude;
+  //   $scope.lng = pos.coords.longitude;
+  //   console.log($scope.lat + ' - ' + $scope.lng);
+  // }, function(error) {
+  //   alert('Unable to get location: ' + error.message);
+  // });
+  
+  var lat = '40.27946';
+  var lng = '-111.717868';
+
+  var geocoder = new google.maps.Geocoder();  
+
+  var point = new google.maps.LatLng(lat, lng);
+  geocoder.geocode({ 'latLng': point }, function (results, status) {
+    if (status !== google.maps.GeocoderStatus.OK) {
+      alert(status);
+    }
+    // This is checking to see if the Geoeode Status is OK before proceeding
+    if (status == google.maps.GeocoderStatus.OK) {
+      
+      $scope.address = results[0]['address_components'];
+      console.log($scope.address);
+    }
+  }); 
 
 }]);
 

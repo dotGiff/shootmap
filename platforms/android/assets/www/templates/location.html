@@ -1,26 +1,26 @@
 <ion-view title="{{location.name}}">
   <ion-content class="has-header">
-    <ul rn-carousel class="image slider">
-      <li class="map">
-        <div class="slide">
-          <img class="carousel-img" src="https://maps.googleapis.com/maps/api/staticmap?center={{location.coordinates.latitude}},{{location.coordinates.longitude}}&zoom=16&size={{viewPort}}x230">
-          <a href="geo:{{location.coordinates.latitude}},{{location.coordinates.longitude}}" class="button button-small icon-right ion-navigate get-directions">go!</a>
-        </div>
-      </li>
-      <li ng-repeat="image in location.pics">
-        <div class="slide">
-          <img ng-src="{{image}}" class="carousel-img">
-        </div>
-      </li>
-    </ul>
+    <ion-slide-box active-slide="myActiveSlide" on-slide-change="slideChange($index)">
+      <ion-slide>
+        <a href="https://www.google.com/maps/@{{location.coordinates.latitude}},{{location.coordinates.longitude}}"
+        target="_blank">
+          <img src="https://maps.googleapis.com/maps/api/staticmap?center={{location.coordinates.latitude}},{{location.coordinates.longitude}}&zoom=12&size={{viewPort}}x230">
+        </a>
+      </ion-slide>
+      <ion-slide ng-repeat="image in location.pics">
+        <img ng-src="{{image}}">
+      </ion-slide>
+    </ion-slide-box>
     <ion-list class="location-card">
-      <div class="address list item card">
-        <h1 class="center-text">
-          {{location.address.street}}, 
-          {{location.address.city}}, 
-          {{location.address.state}} 
-        </h1>
-      </div>
+      <a href="geo:{{location.coordinates.latitude}},{{location.coordinates.longitude}}">
+        <div class="address list item card">
+          <h1 class="center-text">
+            {{location.address.street}}, 
+            {{location.address.city}}, 
+            {{location.address.state}} 
+          </h1>
+        </div>
+      </a>
       <div>
         <div class="row rating">
           <i class="col col-20 icon ion-ios7-star{{star}} center-text"

@@ -17,7 +17,7 @@
       <i class="icon ion-search placeholder-icon"></i>
       <input type="search" ng-value="{{search}}" ng-model="search">
     </label>
-    
+
     <ion-list>
       <div ng-repeat="location in locations | filter:search" class="list card">
       <a href="#/app/locations/{{location.id}}">
@@ -34,7 +34,7 @@
             {{location.address.city}}, 
             {{location.address.state}} 
           </span>
-          <span class="custom-card-rating">4 / 5</span>
+          <span class="custom-card-rating">rating: <span class="bold">{{location.rating}}</span> / 5</span>
         </div>
         <div class="">
           
